@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<textarea class="code">
+
+
+</textarea>
+<div class="result"></div>
+
+<style type="text/css">
+
+  body, html {
+    margin:0;
+    padding: 0;
+  }
+  .code {
+    height: 100vh;
+    width: 30vw;
+
+    color: white;
+    background-color: black;
+
+    font-family: monaco;
+    float: left;
+
+    padding: 10px;
+
+  }
+
+  .result {
+            float: left;
+
+    height: 100vh;
+    width: 65vw;
+    background-color: gold;
+  }
+
+  a {
+    font-size: 15em;
+  }
+</style>
+
+
+
+<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
+
+<script type="text/javascript">
+
+  var rules = {
+
+    'video-arte':'<iframe width="100%" height="315" src="https://www.youtube.com/embed/VNDlP6aClAE?autoplay=1" frameborder="0" allowfullscreen></iframe>',
+
+    'montruc':'<h1> mon truc </h1>',
+
+    'truc': '<a href="http://google.fr">fqsdfqs</a>'
+
+  }
+
+  $( ".code" ).on('input', function() {
+    var text = $(this).val();
+    $('.result').html(replaceAll(text,rules));
+  })
+
+  function replaceAll(str,mapObj){
+      var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+
+      return str.replace(re, function(matched){
+          return rules[matched.toLowerCase()];
+      });
+  }
+
+
+</script>
+
+</body>
+</html>
